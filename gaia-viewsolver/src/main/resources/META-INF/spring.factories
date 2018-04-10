@@ -1,5 +1,6 @@
 
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-org.bravo.gaia.viewsolver.freemarker.FreeMarkerConfigurerPropertySet,\
-org.bravo.gaia.viewsolver.freemarker.CustomizeFreemarkerConfiguration
+org.bravo.gaia.viewsolver.freemarker.FreemarkerConfigurationCustomizer,\
+org.bravo.gaia.viewsolver.freemarker.FreeMarkerPropertiesExtension
+

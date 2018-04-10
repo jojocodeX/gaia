@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 
 import javax.servlet.ServletContext;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration;
@@ -16,11 +18,18 @@ import freemarker.ext.jsp.TaglibFactory.ClasspathMetaInfTldSource;
 
 @Configuration
 @AutoConfigureAfter(FreeMarkerAutoConfiguration.class)
-public class FreeMarkerConfigurerPropertySet {
-	
+public class FreeMarkerPropertiesExtension {
+
+	private static final Logger LOG = LoggerFactory.getLogger(FreeMarkerPropertiesExtension.class);
+
 	//让freemarker加载classpath下的所有tld，用于使用jsptaglibs
 	@Autowired(required = false)
-	public void freeMarkerConfigurerPropertySet(FreeMarkerConfigurer freeMarkerConfigurer, ServletContext sc){
+	public void populateJspTaglib(FreeMarkerConfigurer freeMarkerConfigurer, ServletContext sc){
+		if (freeMarkerConfigurer != null && sc != null) {
+			LOG.warn("freemarker configure没有配置，请检查!");
+			return;
+		}
+
 		List<ClasspathMetaInfTldSource> list = new ArrayList<>();
 		list.add(new ClasspathMetaInfTldSource(Pattern.compile(".*")));
 		if(freeMarkerConfigurer.getTaglibFactory() == null){

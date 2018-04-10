@@ -14,9 +14,9 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
@@ -28,9 +28,9 @@ import java.util.Properties;
  */
 @Configuration
 @AutoConfigureBefore(FreeMarkerAutoConfiguration.class)
-public class CustomizeFreemarkerConfiguration implements WebMvcConfigurer {
+public class FreemarkerConfigurationCustomizer implements WebMvcConfigurer {
 	
-	private static Logger LOG = LoggerFactory.getLogger(CustomizeFreemarkerConfiguration.class);
+	private static Logger LOG = LoggerFactory.getLogger(FreemarkerConfigurationCustomizer.class);
 	//app properties当中的ftl键
 	private static final String FTL = "ftl";
 	ResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver();
@@ -43,26 +43,48 @@ public class CustomizeFreemarkerConfiguration implements WebMvcConfigurer {
 				return;
 			}
 
-			Resource[] resources = resourcePatternResolver.getResources("classpath*:/platform/templates/");
-			String[] templateLoaderPaths = new String[resources.length];
-			for (int i = 0; i < resources.length; i++) {
-				String templateLoaderPath = resources[i].getURI().toString();
-				templateLoaderPaths[i] = templateLoaderPath;
-			} 
-			String[] oldTemplateLoaderPaths = properties.getTemplateLoaderPath();
-			templateLoaderPaths = (String[]) ArrayUtils.addAll(templateLoaderPaths, oldTemplateLoaderPaths);
-			properties.setTemplateLoaderPath(templateLoaderPaths);
-			String springFtl = "/spring.ftl as spring";
-			String allFtl = findAllFtl();
-			String ftls = allFtl == null ? springFtl : springFtl + "," + allFtl;
-			properties.getSettings().put("auto_import", ftls);
-		} catch (Exception e) {
+			//加载各jar包下的platform/template的html页面
+            populateJarTemplates(properties);
+
+			//加载类路径下的ftl宏
+            populateFtlMicro(properties);
+		} catch (IOException e) {
 			LOG.error("系统加载模板资源信息失败");
 			throw new RuntimeException(e);
 		}
 	}
-	
-	//加载系统当中所有定义的宏
+
+    /**
+     * 默认情况下，freemarker是不会加载其他jar包内的templates的，也就是加载路径为classpath:,
+     * 为了使得freemarker能够加载到类路径下所有jar内的template，所以需要将加载路径扩展为classpath*:
+     */
+    private void populateJarTemplates(FreeMarkerProperties properties) throws IOException {
+        Resource[] resources = resourcePatternResolver.getResources("classpath*:/platform/templates/");
+        String[] templateLoaderPaths = new String[resources.length];
+        for (int i = 0; i < resources.length; i++) {
+            String templateLoaderPath = resources[i].getURI().toString();
+            templateLoaderPaths[i] = templateLoaderPath;
+        }
+        String[] oldTemplateLoaderPaths = properties.getTemplateLoaderPath();
+        properties.setTemplateLoaderPath(ArrayUtils.addAll(templateLoaderPaths, oldTemplateLoaderPaths));
+    }
+
+    /**
+     * 系统扩展点，每一个jar包内的类路径下config/app.properties中定义了一个ftl属性，
+     * 用于不同的jar定义属于自己的freemarke宏
+     *
+     */
+    private void populateFtlMicro(FreeMarkerProperties properties) {
+        String springFtl = "/spring.ftl as spring";
+        String allFtl = findAllFtl();
+        String ftls = allFtl == null ? springFtl : springFtl + "," + allFtl;
+        properties.getSettings().put("auto_import", ftls);
+    }
+
+    /**
+     * 加载系统classpath下config/app.properties.并读取其中ftl配置的ftl宏页面
+     * @return ftl宏页面，多个ftl以逗号相隔。例如：no1.ftl,no2.ftl
+     */
 	private String findAllFtl(){
 		List<Properties> allProperties = GlobalAppPropertiesUtil.findAllAppProperties();
 		StringBuffer sb = new StringBuffer();
@@ -78,7 +100,10 @@ public class CustomizeFreemarkerConfiguration implements WebMvcConfigurer {
 			return sb.substring(0, sb.length() - 1);
 		}
 	}
-	
+
+    /**
+     * 每次请求都解析参数locale，用于国际化
+     */
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new LocaleChangeInterceptor());

@@ -5,6 +5,10 @@ package org.bravo.gaia.test.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.support.RequestContext;
+import org.springframework.web.servlet.support.RequestContextUtils;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -15,7 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TestController {
 
     @RequestMapping("/index")
-    public String index() {
+    public String index(HttpServletRequest request) {
+        System.out.println(RequestContextUtils.getLocale(request));
         return "index";
     }
 
