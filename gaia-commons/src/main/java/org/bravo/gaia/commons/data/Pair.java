@@ -1,4 +1,4 @@
-package org.bravo.gaia.commons.domain;
+package org.bravo.gaia.commons.data;
 
 import lombok.Getter;
 import lombok.Setter;

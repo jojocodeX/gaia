@@ -1,6 +1,3 @@
-/**
- * Alipay.com Inc. Copyright (c) 2004-2018 All Rights Reserved.
- */
 package org.bravo.gaia.test;
 
 import org.bravo.gaia.app.boot.AppStarter;

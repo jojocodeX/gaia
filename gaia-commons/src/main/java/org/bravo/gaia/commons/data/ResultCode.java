@@ -2,7 +2,7 @@
  * bravo.org
  * Copyright (c) 2015-2018 All Rights Reserved.
  */
-package org.bravo.gaia.commons.domain;
+package org.bravo.gaia.commons.data;
 
 /**
  * 结果码

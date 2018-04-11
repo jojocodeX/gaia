@@ -23,7 +23,7 @@
         <dependency>
             <groupId>org.bravo</groupId>
             <artifactId>gaia-commons</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
 

@@ -3,6 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>hello</title>
+    <script src="${request.contextPath}/js/jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                url: "${request.contextPath}/test/ajax",
+                success: function (data) {
+                    alert(data);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <h2>hello freemarker</h2>

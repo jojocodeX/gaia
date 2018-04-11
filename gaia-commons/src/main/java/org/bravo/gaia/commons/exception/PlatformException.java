@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.bravo.gaia.commons.commoninterface.IErrorCodeEnum;
 import org.bravo.gaia.commons.context.ErrorContext;
-import org.bravo.gaia.commons.domain.CommonError;
-import org.bravo.gaia.commons.domain.ErrorCode;
+import org.bravo.gaia.commons.data.CommonError;
+import org.bravo.gaia.commons.data.ErrorCode;
 
 /**
  * 平台公共异常类，所有application的异常类都需要继承此类。
@@ -30,9 +30,6 @@ public abstract class PlatformException extends RuntimeException {
     @Getter
 	protected ErrorCode errorCode;
 
-	public PlatformException() {}
-   
-	
 	public PlatformException(Throwable throwable) {
 	    super(throwable);
         populateErrorCode(throwable);

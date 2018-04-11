@@ -6,8 +6,8 @@ package org.bravo.gaia.commons.context;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.bravo.gaia.commons.domain.CommonError;
-import org.bravo.gaia.commons.domain.ErrorCode;
+import org.bravo.gaia.commons.data.CommonError;
+import org.bravo.gaia.commons.data.ErrorCode;
 
 import java.io.Serializable;
 import java.util.ArrayList;

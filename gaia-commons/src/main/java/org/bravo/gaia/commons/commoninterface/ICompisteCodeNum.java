@@ -4,7 +4,7 @@
  */
 package org.bravo.gaia.commons.commoninterface;
 
-import org.bravo.gaia.commons.domain.CompositeCode;
+import org.bravo.gaia.commons.data.CompositeCode;
 
 /**
  * 
