@@ -239,7 +239,7 @@
 		<module>gaia-commons</module>
 		<module>gaia-utils</module>
 		<module>gaia-viewsolver</module>
-		<module>gaia-test</module>
+		<module>gaia-test-sample</module>
 	</modules>
 	
 </project>
