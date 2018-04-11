@@ -9,8 +9,10 @@ import org.bravo.gaia.app.boot.AppStarter;
  */
 public class StarterTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         AppStarter.start(args);
+        //AppStarter.blockingStart(args);
     }
+
 
 }
