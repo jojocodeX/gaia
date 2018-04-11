@@ -7,7 +7,6 @@ package org.bravo.gaia.commons.consist;
  */
 public interface SystemConsist {
 
-    String IS_SEPERATE_VIEW = "isSeperateView";
-    String IS_DEFINEDEFAULT_PAGE = "isDefineDefaultPage";
+    String USER_DIR = System.getProperty("user.dir");
 
 }

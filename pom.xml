@@ -240,6 +240,7 @@
 		<module>gaia-utils</module>
 		<module>gaia-viewsolver</module>
 		<module>gaia-test-sample</module>
-	</modules>
+        <module>gaia-datasource</module>
+    </modules>
 	
 </project>
