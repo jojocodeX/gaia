@@ -30,7 +30,7 @@
 
         <dependency>
             <groupId>org.bravo</groupId>
-            <artifactId>gaia-mybatis</artifactId>
+            <artifactId>gaia-biz-mybatis-infrastructure</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
