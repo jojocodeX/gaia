@@ -27,6 +27,7 @@ public class ExceptionHandler implements HandlerExceptionResolver {
         //向客户端发送错误消息
         ErrorMessage.sendError(response, errorMessage);
 
+		ex.printStackTrace();
 		return modelAndView;
 	}
 

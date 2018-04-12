@@ -45,6 +45,7 @@ public class ExceptionWithViewHandler implements HandlerExceptionResolver {
             ErrorMessage.sendError(response, errorMessage);
         }
 
+        ex.printStackTrace();
 		return modelAndView;
 	}
 

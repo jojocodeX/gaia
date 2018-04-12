@@ -2,8 +2,8 @@ package org.bravo.gaia.commons.consist;
 
 /**
  *
- * @author fengqian.lj
- * @version $Id: SystemConsist.java, v 0.1 2018年04月10日 20:17 fengqian.lj Exp $
+ * @author lijian
+ * @version $Id: SystemConsist.java, v 0.1 2018年04月10日 20:17 lijian Exp $
  */
 public interface SystemConsist {
 

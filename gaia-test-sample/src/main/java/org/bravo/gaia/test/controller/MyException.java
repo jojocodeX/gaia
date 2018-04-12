@@ -6,8 +6,8 @@ import org.bravo.gaia.commons.exception.PlatformException;
 
 /**
  *
- * @author fengqian.lj
- * @version $Id: MyException.java, v 0.1 2018年04月10日 19:20 fengqian.lj Exp $
+ * @author lijian
+ * @version $Id: MyException.java, v 0.1 2018年04月10日 19:20 lijian Exp $
  */
 public class MyException extends PlatformException {
 

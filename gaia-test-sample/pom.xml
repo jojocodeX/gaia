@@ -22,11 +22,11 @@
             <artifactId>gaia-datasource</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.bravo</groupId>-->
-            <!--<artifactId>gaia-viewsolver</artifactId>-->
-            <!--<version>${project.parent.version}</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.bravo</groupId>
+            <artifactId>gaia-viewsolver</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
 
 

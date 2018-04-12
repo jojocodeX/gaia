@@ -2,8 +2,8 @@ package org.bravo.gaia.commons.consist;
 
 /**
  *
- * @author fengqian.lj
- * @version $Id: WebConsist.java, v 0.1 2018年04月10日 19:11 fengqian.lj Exp $
+ * @author lijian
+ * @version $Id: WebConsist.java, v 0.1 2018年04月10日 19:11 lijian Exp $
  */
 public interface WebConsist {
 

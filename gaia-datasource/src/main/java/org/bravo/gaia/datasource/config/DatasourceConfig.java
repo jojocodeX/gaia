@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnResource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,8 +15,8 @@ import java.io.File;
 import java.sql.SQLException;
 
 /**
- * @author fengqian.lj
- * @version $Id: DatasourceConfig.java, v 0.1 2018年04月11日 17:31 fengqian.lj Exp $
+ * @author lijian
+ * @version $Id: DatasourceConfig.java, v 0.1 2018年04月11日 17:31 lijian Exp $
  */
 @Configuration
 public class DatasourceConfig {

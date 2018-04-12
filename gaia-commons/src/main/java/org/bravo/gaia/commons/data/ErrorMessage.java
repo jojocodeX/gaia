@@ -14,8 +14,8 @@ import java.io.IOException;
 
 /**
  * 返回给客户端的错误消息
- * @author fengqian.lj
- * @version $Id: ErrorMessage.java, v 0.1 2018年04月10日 17:30 fengqian.lj Exp $
+ * @author lijian
+ * @version $Id: ErrorMessage.java, v 0.1 2018年04月10日 17:30 lijian Exp $
  */
 @Setter
 @Getter

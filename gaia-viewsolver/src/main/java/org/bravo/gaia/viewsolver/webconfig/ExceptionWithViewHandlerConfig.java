@@ -6,8 +6,8 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 
 /**
  *
- * @author fengqian.lj
- * @version $Id: ExceptionHandlerConfig.java, v 0.1 2018年04月11日 10:30 fengqian.lj Exp $
+ * @author lijian
+ * @version $Id: ExceptionHandlerConfig.java, v 0.1 2018年04月11日 10:30 lijian Exp $
  */
 @Configuration
 public class ExceptionWithViewHandlerConfig {

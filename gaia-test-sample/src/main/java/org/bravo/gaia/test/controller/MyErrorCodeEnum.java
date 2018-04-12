@@ -7,8 +7,8 @@ import org.bravo.gaia.commons.data.ErrorCode;
 
 /**
  *
- * @author fengqian.lj
- * @version $Id: MyErrorCodeEnum.java, v 0.1 2018年04月10日 19:20 fengqian.lj Exp $
+ * @author lijian
+ * @version $Id: MyErrorCodeEnum.java, v 0.1 2018年04月10日 19:20 lijian Exp $
  */
 public enum MyErrorCodeEnum implements IErrorCodeEnum {
     NOT_FOUND(CodeLevel.ERROR, CodeType.BIZ_ERROR, "001", "当前系统", "300", "NOT_FOUND", "没有找到数据"),

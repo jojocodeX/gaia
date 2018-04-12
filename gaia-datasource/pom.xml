@@ -16,6 +16,22 @@
         <druid-version>1.1.9</druid-version>
     </properties>
 
+    <description>
+        数据源集成组件，包装了druid和sharding-jdbc以及测试数据库的集成;
+        1: 当datasource.test=true时,将使用h2数据库，在当前工作目录data下生成platform的h2数据库文件
+           默认的h2数据库用户和密码为platform:123，可以通过default.datasource.user和default.datasource.password
+           进行修改
+        2: druid使用spring-boot-starter完成与spring-boot的集成,包含加密解密,详情请参考druid的文档
+           https://github.com/alibaba/druid/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98
+        3: sharding-jdbc的配置通过业务系统使用java config来完成;
+           今后有了ddc之后，通过集中化配置（提供UI）并推送到应用完成配置;
+           ddc和系统之间有约定，必须包含app.name、db.mode、sharding.jdbc.db.verison三者共同决定，例如：
+           app.name=order
+           db.mode=dev
+           sharding.jdbc.db.version=001
+           系统通过这三个属性定位到ddc获取db配置信息完成加载
+    </description>
+
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>
@@ -63,7 +79,7 @@
         <!-- druid-spring-boot-starter -->
         <dependency>
             <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
+            <artifactId>druid-spring-boot-starter</artifactId>
             <version>${druid-version}</version>
         </dependency>
 

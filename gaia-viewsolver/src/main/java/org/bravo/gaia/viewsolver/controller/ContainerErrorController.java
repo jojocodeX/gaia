@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  * 系统默认的错误页面配置controller
  *
- * @author fengqian.lj
- * @version $Id: ContainerErrorController.java, v 0.1 2018年04月10日 20:22 fengqian.lj Exp $
+ * @author lijian
+ * @version $Id: ContainerErrorController.java, v 0.1 2018年04月10日 20:22 lijian Exp $
  */
 @Controller
 @RequestMapping(value = "/")
