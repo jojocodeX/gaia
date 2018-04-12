@@ -242,6 +242,9 @@
 		<module>gaia-test-sample</module>
         <module>gaia-datasource</module>
 		<module>gaia-jpa</module>
+		<module>gaia-mybatis</module>
+		<module>gaia-biz-mybatis-infrastructure</module>
+		<module>gaia-biz-jpa-infrastructure</module>
 	</modules>
 	
 </project>

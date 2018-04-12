@@ -1,6 +1,9 @@
 package org.bravo.gaia.test.example.controller;
 
-import org.bravo.gaia.test.example.dao.UserRepository;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.bravo.gaia.test.example.dao.MyMapper;
+import org.bravo.gaia.test.example.dao.MyMapper2;
 import org.bravo.gaia.test.example.dataobject.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -9,8 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -24,21 +25,32 @@ public class TestController {
 
     @Autowired
     private JdbcTemplate   jdbcTemplate;
-    @PersistenceContext
-    private EntityManager entityManager;
     @Autowired
-    private UserRepository userRepository;
+    private MyMapper myMapper;
+    @Autowired
+    private MyMapper2 myMapper2;
+    @Autowired
+    private SqlSessionFactory sqlSessionFactory;
 
     @RequestMapping("/index")
-    @Transactional
     public String index(HttpServletRequest request) {
-        //System.out.println(entityManager);
-        //User user = userRepository.findById("1");
+        //User user = new User();
+        //user.setId("1");
+        //User one = myMapper.selectOne(user);
+        //System.out.println(one);
+        //SqlSession sqlSession = sqlSessionFactory.openSession();
+        //Object findById = sqlSession.selectOne("findById");
+        User param = new User();
+        param.setId("1");
+
         User user = new User();
-        user.setId("5");
+        user.setId("1");
         user.setName("alex");
-        userRepository.save(user);
-        jdbcTemplate.update("insert into t_user(id, name) VALUES (?,?)", "9" , "9");
+        myMapper.insert(user);
+        if (true) {
+            throw new RuntimeException("错了");
+        }
+        //jdbcTemplate.update("insert into t_user(id, name) VALUES (?,?)", "9" , "9");
         return "index";
     }
 
