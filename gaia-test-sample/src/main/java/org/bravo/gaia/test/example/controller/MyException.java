@@ -1,4 +1,4 @@
-package org.bravo.gaia.test.controller;
+package org.bravo.gaia.test.example.controller;
 
 import org.bravo.gaia.commons.commoninterface.IErrorCodeEnum;
 import org.bravo.gaia.commons.data.ErrorCode;

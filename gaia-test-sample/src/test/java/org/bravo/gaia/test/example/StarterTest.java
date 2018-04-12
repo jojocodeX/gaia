@@ -1,4 +1,4 @@
-package org.bravo.gaia.test;
+package org.bravo.gaia.test.example;
 
 import org.bravo.gaia.app.boot.AppStarter;
 

@@ -25,7 +25,7 @@ public class FreeMarkerPropertiesExtension {
 	//让freemarker加载classpath下的所有tld，用于使用jsptaglibs
 	@Autowired(required = false)
 	public void populateJspTaglib(FreeMarkerConfigurer freeMarkerConfigurer, ServletContext sc){
-		if (freeMarkerConfigurer != null && sc != null) {
+		if (freeMarkerConfigurer == null && sc == null) {
 			LOG.warn("freemarker configure没有配置，请检查!");
 			return;
 		}

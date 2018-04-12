@@ -241,6 +241,7 @@
 		<module>gaia-viewsolver</module>
 		<module>gaia-test-sample</module>
         <module>gaia-datasource</module>
-    </modules>
+		<module>gaia-jpa</module>
+	</modules>
 	
 </project>
