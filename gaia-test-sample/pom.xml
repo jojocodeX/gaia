@@ -27,6 +27,11 @@
             <artifactId>gaia-viewsolver</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.bravo</groupId>
+            <artifactId>gaia-log</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.bravo</groupId>

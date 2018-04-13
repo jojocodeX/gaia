@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<included>
+
+    <!-- 引入spring boot默认的日志config -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/spring.log}"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <include resource="org/springframework/boot/logging/logback/file-appender.xml"/>
+
+
+    <!-- spring boot logback extension -->
+    <springProperty scope="context" name="applicationName" source="spring.application.name" defaultValue="UNKNOW"/>
+
+
+    <!-- gaia glibal appender config -->
+    <appender name="GLOBAL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.dir}/logs/global/${applicationName}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}/logs/global/${applicationName}.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.dir}/logs/global/${applicationName}-error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}/logs/global/${applicationName}-error.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="ERROR" level="ERROR" additivity="false">
+        <appender-ref ref="ERROR"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <!-- middleware trace log config -->
+    <!-- message -->
+    <appender name="TRACE-MESSAGE-SUB" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.dir}/logs/trace/message/msg-sub.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}/logs/trace/message/msg-sub.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="TRACE-MESSAGE-SUB" level="INFO" additivity="false">
+        <appender-ref ref="TRACE-MESSAGE-SUB"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <appender name="TRACE-MESSAGE-PUB" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.dir}/logs/trace/message/msg-pub.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}/logs/trace/message/msg-pub.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="TRACE-MESSAGE-PUB" level="INFO" additivity="false">
+        <appender-ref ref="TRACE-MESSAGE-PUB"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <!-- rpc -->
+    <appender name="TRACE-RPC-RECEPT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.dir}/logs/trace/rpc/rpc-recept.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}/logs/trace/rpc/rpc-recept.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="TRACE-RPC-RECEPT" level="INFO" additivity="false">
+        <appender-ref ref="TRACE-RPC-RECEPT"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <appender name="TRACE-RPC-SEND" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.dir}/logs/trace/rpc/rpc-send.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}/logs/trace/rpc/rpc-send.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="TRACE-RPC-SEND" level="INFO" additivity="false">
+        <appender-ref ref="TRACE-RPC-SEND"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <!-- database -->
+    <appender name="TRACE-DATABASE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.dir}/logs/trace/database/database.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}/logs/trace/database/database.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="TRACE-DATABASE" level="INFO" additivity="false">
+        <appender-ref ref="TRACE-DATABASE"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <!-- middleware biz log config -->
+    <!-- message -->
+    <appender name="BIZ-MESSAGE-SUB" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.dir}/logs/biz/message/msg-sub.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}/logs/biz/message/msg-sub.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="BIZ-MESSAGE-SUB" level="INFO" additivity="false">
+        <appender-ref ref="BIZ-MESSAGE-SUB"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <appender name="BIZ-MESSAGE-PUB" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.dir}/logs/biz/message/msg-pub.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}/logs/biz/message/msg-pub.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="BIZ-MESSAGE-PUB" level="INFO" additivity="false">
+        <appender-ref ref="BIZ-MESSAGE-PUB"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <!-- rpc -->
+    <appender name="BIZ-RPC-RECEPT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.dir}/logs/biz/rpc/rpc-recept.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}/logs/biz/rpc/rpc-recept.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="BIZ-RPC-RECEPT" level="INFO" additivity="false">
+        <appender-ref ref="BIZ-RPC-RECEPT"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <appender name="BIZ-RPC-SEND" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.dir}/logs/biz/rpc/rpc-send.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}/logs/biz/rpc/rpc-send.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="BIZ-RPC-SEND" level="INFO" additivity="false">
+        <appender-ref ref="BIZ-RPC-SEND"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <!-- database -->
+    <appender name="BIZ-DATABASE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.dir}/logs/biz/database/database.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}/logs/biz/database/database.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="BIZ-DATABASE" level="INFO" additivity="false">
+        <appender-ref ref="BIZ-DATABASE"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+
+    <!-- root config -->
+    <root level="INFO">
+        <appender-ref ref="GLOBAL"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</included>

@@ -1,11 +1,15 @@
 package org.bravo.gaia.test.example.controller;
 
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.bravo.gaia.log.GaiaLogUtil;
 import org.bravo.gaia.test.example.dao.MyMapper;
 import org.bravo.gaia.test.example.dao.MyMapper2;
 import org.bravo.gaia.test.example.dataobject.User;
 import org.bravo.gaia.test.example.service.MyService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -34,12 +38,15 @@ public class TestController {
     @Autowired
     private MyService         myService;
 
+    private static final Logger GLOBAL_LOG = LoggerFactory.getLogger(TestController.class);
+
     @RequestMapping("/index")
     public String index(HttpServletRequest request) {
-        User user = new User();
-        user.setId("2");
-        user.setName("alex2222");
-        myService.add(user);
+        GaiaLogUtil.getTraceMsgSubLogger().info("消息来了");
+        GaiaLogUtil.getTraceRpcSendLogger().info("rpc同步调用来了");
+        GLOBAL_LOG.info("全局记录");
+        GaiaLogUtil.getGlobalErrorLogger().info("错误appender info记录");
+        GaiaLogUtil.getGlobalErrorLogger().error(ExceptionUtils.getStackTrace(new RuntimeException("错了")));
         return "index";
     }
 
