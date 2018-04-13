@@ -246,6 +246,7 @@
 		<module>gaia-biz-mybatis-infrastructure</module>
 		<module>gaia-biz-jpa-infrastructure</module>
         <module>gaia-log</module>
-    </modules>
+		<module>gaia-rpc</module>
+	</modules>
 	
 </project>
