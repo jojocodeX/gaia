@@ -1,6 +1,5 @@
 package org.bravo.gaia.log;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
