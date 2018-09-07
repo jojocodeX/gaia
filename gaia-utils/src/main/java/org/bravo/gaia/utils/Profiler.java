@@ -272,11 +272,11 @@ public class Profiler {
                 sb.append('\n');
 
                 if (i == (subEntries.size() - 1)) {
-                    subEntry.toString(sb, prefix2 + "`---", prefix2 + "    "); // ���һ��
+                    subEntry.toString(sb, prefix2 + "`---", prefix2 + "    ");
                 } else if (i == 0) {
-                    subEntry.toString(sb, prefix2 + "+---", prefix2 + "|   "); // ��һ��
+                    subEntry.toString(sb, prefix2 + "+---", prefix2 + "|   ");
                 } else {
-                    subEntry.toString(sb, prefix2 + "+---", prefix2 + "|   "); // �м���
+                    subEntry.toString(sb, prefix2 + "+---", prefix2 + "|   ");
                 }
             }
         }

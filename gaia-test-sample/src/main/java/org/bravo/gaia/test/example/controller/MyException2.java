@@ -6,6 +6,9 @@ package org.bravo.gaia.test.example.controller;
 
 import org.bravo.gaia.commons.domain.ErrorCode;
 import org.bravo.gaia.commons.exception.PlatformException;
+import org.bravo.gaia.utils.Profiler;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author alex.lj
@@ -41,7 +44,17 @@ public class MyException2 extends PlatformException {
         super(msg, e);
     }
 
-    public static void main(String[] args) {
-        throw new MyException2(new MyException2(MyErrorEnum.PARAM_ILLEGAL.getCode()));
+    public static void main(String[] args) throws InterruptedException {
+        Profiler.start("11323");
+        Profiler.start("2222");
+
+        TimeUnit.SECONDS.sleep(2);
+
+        Profiler.release();
+        Profiler.release();
+
+        String dump = Profiler.dump();
+
+        System.out.println(dump);
     }
 }
