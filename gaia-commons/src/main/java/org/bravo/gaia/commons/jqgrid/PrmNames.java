@@ -31,7 +31,7 @@ public class PrmNames {
 	 */
 	private String nd = "nd";
 	/**
-	 * the name of the id when POST-ing data in editing modules (default value
+	 * the name of the id when POST-ing domain in editing modules (default value
 	 * id)
 	 */
 	private String id = "id";
@@ -40,17 +40,17 @@ public class PrmNames {
 	 */
 	private String oper = "oper";
 	/**
-	 * the name of operation when the data is POST-ed in edit mode (default
+	 * the name of operation when the domain is POST-ed in edit mode (default
 	 * value edit)
 	 */
 	private String editoper = "edit";
 	/**
-	 * the name of operation when the data is posted in add mode (default value
+	 * the name of operation when the domain is posted in add mode (default value
 	 * add)
 	 */
 	private String addoper = "add";
 	/**
-	 * the name of operation when the data is posted in delete mode (default
+	 * the name of operation when the domain is posted in delete mode (default
 	 * value del)
 	 */
 	private String deloper = "del";
@@ -60,7 +60,7 @@ public class PrmNames {
 	 */
 	private String totalrows = "totalrows";
 	/**
-	 * the name passed when we click to load data in the subgrid (default value
+	 * the name passed when we click to load domain in the subgrid (default value
 	 * id)
 	 */
 	private String subgridid = "id";

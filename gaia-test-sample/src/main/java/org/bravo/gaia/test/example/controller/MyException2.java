@@ -11,37 +11,37 @@ import org.bravo.gaia.commons.exception.PlatformException;
  * @author alex.lj
  * @version @Id: MyException.java, v 0.1 2018年09月07日 23:25 alex.lj Exp $
  */
-public class MyException extends PlatformException {
+public class MyException2 extends PlatformException {
 
-    public MyException(Throwable throwable) {
+    public MyException2(Throwable throwable) {
         super(throwable);
     }
 
-    public MyException(PlatformException e) {
+    public MyException2(PlatformException e) {
         super(e);
     }
 
-    public MyException(ErrorCode errorCode) {
+    public MyException2(ErrorCode errorCode) {
         super(errorCode);
     }
 
-    public MyException(String msg) {
+    public MyException2(String msg) {
         super(msg);
     }
 
-    public MyException(String msg, ErrorCode errorCode) {
+    public MyException2(String msg, ErrorCode errorCode) {
         super(msg, errorCode);
     }
 
-    public MyException(String msg, Throwable throwable) {
+    public MyException2(String msg, Throwable throwable) {
         super(msg, throwable);
     }
 
-    public MyException(String msg, PlatformException e) {
+    public MyException2(String msg, PlatformException e) {
         super(msg, e);
     }
 
     public static void main(String[] args) {
-        throw new MyException2(new MyException(MyErrorEnum.PARAM_ILLEGAL.getCode()));
+        throw new MyException2(new MyException2(MyErrorEnum.PARAM_ILLEGAL.getCode()));
     }
 }

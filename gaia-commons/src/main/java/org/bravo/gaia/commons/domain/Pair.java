@@ -1,4 +1,4 @@
-package org.bravo.gaia.commons.data;
+package org.bravo.gaia.commons.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 public class Pair<F, S> {
 
-	private F f;
-	private S s;
+	private F first;
+	private S second;
 	
 }

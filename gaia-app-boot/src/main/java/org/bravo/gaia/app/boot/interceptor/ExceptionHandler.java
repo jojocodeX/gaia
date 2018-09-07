@@ -1,6 +1,8 @@
 package org.bravo.gaia.app.boot.interceptor;
 
-import org.bravo.gaia.commons.data.ErrorMessage;
+import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.bravo.gaia.commons.domain.ResultMessage;
+import org.bravo.gaia.log.GaiaLogUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerExceptionResolver;
@@ -15,20 +17,20 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ExceptionHandler implements HandlerExceptionResolver {
 
-    private final static Logger LOG = LoggerFactory.getLogger(ExceptionHandler.class);
-
-	@Override
-	public ModelAndView resolveException(HttpServletRequest request,
-			HttpServletResponse response, Object handler, Exception ex) {
+    @Override
+    public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response,
+                                         Object handler, Exception ex) {
         ModelAndView modelAndView = new ModelAndView();
         //构造错误消息
-        ErrorMessage errorMessage = ErrorMessage.buildErrorMessage(ex);
+        ResultMessage errorMessage = ResultMessage.buildErrorMessage(ex);
 
         //向客户端发送错误消息
-        ErrorMessage.sendError(response, errorMessage);
+        ResultMessage.sendError(response, errorMessage);
 
-		ex.printStackTrace();
-		return modelAndView;
-	}
+        //打印日志
+        GaiaLogUtil.getGlobalErrorLogger().error(ExceptionUtils.getStackTrace(ex));
+
+        return modelAndView;
+    }
 
 }

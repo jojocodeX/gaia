@@ -8,22 +8,22 @@ import java.util.List;
 public class Options {
 
 	/**
-	 * The url of the file that returns the data needed to populate the grid
+	 * The url of the file that returns the domain needed to populate the grid
 	 */
 	private String url;
 	/**
-	 * Defines in what format to expect the data that fills the grid. Valid
-	 * options are xml (we expect data in xml format), xmlstring (we expect xml
-	 * data as string), json (we expect data in JSON format), jsonstring (we
-	 * expect JSON data as a string), local (we expect data defined at client
-	 * side (array data)), javascript (we expect javascript as data), function
-	 * (custom defined function for retrieving data). See colModel API and
+	 * Defines in what format to expect the domain that fills the grid. Valid
+	 * options are xml (we expect domain in xml format), xmlstring (we expect xml
+	 * domain as string), json (we expect domain in JSON format), jsonstring (we
+	 * expect JSON domain as a string), local (we expect domain defined at client
+	 * side (array domain)), javascript (we expect javascript as domain), function
+	 * (custom defined function for retrieving domain). See colModel API and
 	 * Retrieving Data
 	 */
 	private String datatype = "xml";
 	/**
 	 * Sets how many records we want to view in the grid. This parameter is
-	 * passed to the url for use by the server routine retrieving the data. Note
+	 * passed to the url for use by the server routine retrieving the domain. Note
 	 * that if you set this parameter to 10 (i.e. retrieve 10 records) and your
 	 * server return 15 then only 10 records will be loaded. <del>Set this
 	 * parameter to -1 (unlimited) to disable this checking.</del>
@@ -71,9 +71,9 @@ public class Options {
 	 */
 	private String height = "150";
 	/**
-	 * The column according to which the data is to be sorted when it is
+	 * The column according to which the domain is to be sorted when it is
 	 * initially loaded from the server (note that you will have to use
-	 * datatypes xml or json to load remote data). This parameter is appended to
+	 * datatypes xml or json to load remote domain). This parameter is appended to
 	 * the url. If this value is set and the index (name) matches the name from
 	 * colModel, then an icon indicating that the grid is sorted according to
 	 * this column is added to the column header. This icon also indicates the
@@ -120,13 +120,13 @@ public class Options {
 	 <code>order</code>: the sort order (default value <code>sord</code>) <br>
 	 <code>search</code>: the search indicator (default value <code>_search</code>) <br>
 	 <code>nd</code>: the time passed to the request (for <acronym title="Internet Explorer">IE</acronym> browsers not to cache the request) (default value <code>nd</code>) <br>
-	 <code>id</code>: the name of the id when POST-ing data in editing modules (default value <code>id</code>) <br>
+	 <code>id</code>: the name of the id when POST-ing domain in editing modules (default value <code>id</code>) <br>
 	 <code>oper</code>: the operation parameter (default value <code>oper</code>) <br>
-	 <code>editoper</code>: the name of operation when the data is POST-ed in edit mode (default value <code>edit</code>) <br>
-	 <code>addoper</code>: the name of operation when the data is posted in add mode (default value <code>add</code>) <br>
-	 <code>deloper</code>: the name of operation when the data is posted in delete mode (default value <code>del</code>) <br>
+	 <code>editoper</code>: the name of operation when the domain is POST-ed in edit mode (default value <code>edit</code>) <br>
+	 <code>addoper</code>: the name of operation when the domain is posted in add mode (default value <code>add</code>) <br>
+	 <code>deloper</code>: the name of operation when the domain is posted in delete mode (default value <code>del</code>) <br>
 	 <code>totalrows</code>: the number of the total rows to be obtained from server - see <code>rowTotal</code> (default value <code>totalrows</code>) <br>
-	 <code>subgridid</code>: the name passed when we click to load data in the subgrid (default value <code>id</code>)
+	 <code>subgridid</code>: the name passed when we click to load domain in the subgrid (default value <code>id</code>)
 	 */
 	private PrmNames prmNames;
 	

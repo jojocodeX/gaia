@@ -4,14 +4,14 @@
  */
 package org.bravo.gaia.commons.context;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.bravo.gaia.commons.data.CommonError;
-import org.bravo.gaia.commons.data.ErrorCode;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.bravo.gaia.commons.domain.ErrorCode;
+
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * 错误上下文对象
@@ -23,91 +23,81 @@ import java.util.List;
  */
 public class ErrorContext implements Serializable {
 
-    private static final long serialVersionUID = -2191953263464121647L;
+    private static final long   serialVersionUID = -2191953263464121647L;
 
     @Setter
     @Getter
-    private List<CommonError> errorStack = new ArrayList<>();
+    private List<ErrorCode>     errorStack       = new ArrayList<>();
 
     private static final String SPLIT            = "|";
-    
+
     /**
      * 默认构造方法
      */
-    public ErrorContext() {}
-    
+    public ErrorContext() {
+
+    }
+
     /**
-     * 获取当前标准错误对象
-     * @return 标准错误对象
+     * 获取当前错误码
      */
-    public CommonError fetchCurrentError() {
-        
+    public ErrorCode fetchCurrentError() {
+
         if (errorStack != null && errorStack.size() > 0) {
-            
+
             return errorStack.get(errorStack.size() - 1);
         }
         return null;
     }
-    
+
     /**
-     * 获取原始标准错误对象
-     * @return 标准错误对象
+     * 获取原始错误码
      */
-    public CommonError fetchRootError() {
-        
+    public ErrorCode fetchRootError() {
+
         if (errorStack != null && errorStack.size() > 0) {
             return errorStack.get(0);
         }
         return null;
     }
-    
-    /**
-     * 获取当前标准错误码 
-     * @return 准错误码 
-     */
-    public ErrorCode fetchCurrentErrorCode() {
-        
-        if (errorStack != null && errorStack.size() > 0) {
-            
-            return errorStack.get(errorStack.size() - 1).getErrorCode();
-        }
-        return null;
-    }
-    
+
     /**
      * 向错误堆栈中添加错误对象
      * 
-     * @param error 错误对象
+     * @param errorCode 错误码
      */
-    public void addError(CommonError error) {
-        
-        if (errorStack == null) {
-            
-            errorStack = new ArrayList<>();
-        }
-        errorStack.add(error);
+    public void addErrorCode(ErrorCode errorCode) {
+        errorStack.add(errorCode);
     }
-    
+
+    /**
+     * 向错误堆栈中添加另外一个堆栈
+     *
+     * @param errorContext 错误码
+     */
+    public void addErrorStack(ErrorContext errorContext) {
+        errorStack.addAll(errorContext.getErrorStack());
+    }
+
     // ~~~重写方法
     /** 
      * @see Object#toString()
      */
     public String toString() {
-        
+
         StringBuffer sb = new StringBuffer();
-        
+
         for (int i = errorStack.size(); i > 0; i--) {
-            
+
             if (i == errorStack.size()) {
-                
+
                 sb.append(errorStack.get(i - 1));
             } else {
-                
+
                 sb.append(SPLIT).append(errorStack.get(i - 1));
             }
         }
         return sb.toString();
     }
-    
-    
+
 }

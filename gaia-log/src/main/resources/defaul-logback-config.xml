@@ -13,7 +13,7 @@
     <springProperty scope="context" name="applicationName" source="spring.application.name" defaultValue="UNKNOW"/>
 
 
-    <!-- gaia glibal appender config -->
+    <!-- gaia global appender config -->
     <appender name="GLOBAL" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${user.dir}/logs/global/${applicationName}.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">

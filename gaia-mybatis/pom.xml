@@ -13,9 +13,9 @@
 
     <description>
         mybatis包装组件，spring boot环境下自动集成分页和通用mapper plugin
-        通用mapper和mybatis原生的mapper的寻址路径默认都为:org.apel.**.dao
-        通用mapper可以进行配置:
-        mybatis.mapper.scan=org.apel.**.dao
+        通用mapper和mybatis原生的mapper的寻址路径默认都为:**.dao
+        通用mapper可以在application.properties中进行配置, 例如：
+        mybatis.mapper.scan=org.bravo.**.dao
     </description>
 
     <properties>

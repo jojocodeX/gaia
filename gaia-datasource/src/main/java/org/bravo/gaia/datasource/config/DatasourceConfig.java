@@ -33,7 +33,7 @@ public class DatasourceConfig {
     public DataSource dataSource() throws SQLException {
         LOG.info("构建H2测试数据库");
 
-        File dir = new File(SystemConsist.USER_DIR,"data");
+        File dir = new File(SystemConsist.USER_DIR,"domain");
         dir.mkdirs();
         DruidDataSource dataSource = new DruidDataSource();
         String url ="jdbc:h2:" +  dir + File.separator + "platform;AUTO_SERVER=TRUE";

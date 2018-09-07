@@ -8,50 +8,50 @@ import java.io.Serializable;
  *
  */
 public class Message implements Serializable {
-	private static final long serialVersionUID = 8117244181993856881L;
+    private static final long serialVersionUID = 8117244181993856881L;
 
-	// 响应状态码，一般自定义
-	private int statusCode;
-	// 响应的状态文本信息
-	private String statusText;
-	// 响应的数据信息
-	private Object data;
+    // 响应状态码，一般自定义
+    private int               statusCode;
+    // 响应的状态文本信息
+    private String            statusText;
+    // 响应的数据信息
+    private Object            data;
 
-	public Message() {
-	}
+    public Message() {
+    }
 
-	public Message(int statusCode, String statusText) {
-		this(statusCode, statusText, null);
-	}
+    public Message(int statusCode, String statusText) {
+        this(statusCode, statusText, null);
+    }
 
-	public Message(int statusCode, String statusText, Object data) {
-		this.statusCode = statusCode;
-		this.statusText = statusText;
-		this.data = data;
-	}
+    public Message(int statusCode, String statusText, Object data) {
+        this.statusCode = statusCode;
+        this.statusText = statusText;
+        this.data = data;
+    }
 
-	public int getStatusCode() {
-		return statusCode;
-	}
+    public int getStatusCode() {
+        return statusCode;
+    }
 
-	public void setStatusCode(int statusCode) {
-		this.statusCode = statusCode;
-	}
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
+    }
 
-	public String getStatusText() {
-		return statusText;
-	}
+    public String getStatusText() {
+        return statusText;
+    }
 
-	public void setStatusText(String statusText) {
-		this.statusText = statusText;
-	}
+    public void setStatusText(String statusText) {
+        this.statusText = statusText;
+    }
 
-	public Object getData() {
-		return data;
-	}
+    public Object getData() {
+        return data;
+    }
 
-	public void setData(Object data) {
-		this.data = data;
-	}
+    public void setData(Object data) {
+        this.data = data;
+    }
 
 }

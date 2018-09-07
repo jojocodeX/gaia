@@ -22,22 +22,22 @@ import java.util.*;
  * 	  filters: {
  * 	    groupOp: "OR"
  * 		rules: [
- * 		  {field: "name", op: "eq", data: "alex", groupOp: "AND"},
-		  {field: "name", op: "eq", data: "alex", groupOp: "AND"}
+ * 		  {field: "name", op: "eq", domain: "alex", groupOp: "AND"},
+		  {field: "name", op: "eq", domain: "alex", groupOp: "AND"}
  * 		],
  * 		groups: 
  * 		[{
  * 			groupOp: "AND", 
  * 			rules:[
- * 			  {field: "birthday", op: "gt", data: "2015-01-11", cusType: "date", prefixBrackets:true, groupOp: "AND"},
- * 			  {field: "birthday", op: "lt", data: "2015-01-21", cusType: "date", suffixBrackets: true, groupOp: "AND"},
+ * 			  {field: "birthday", op: "gt", domain: "2015-01-11", cusType: "date", prefixBrackets:true, groupOp: "AND"},
+ * 			  {field: "birthday", op: "lt", domain: "2015-01-21", cusType: "date", suffixBrackets: true, groupOp: "AND"},
  * 			]
  * 		  },
  * 		  {
  * 			groupOp: "OR", 
  * 			rules:[
- * 			  {field: "age", op: "ge", data: 10,  prefixBrackets:true, groupOp: "AND"},
- * 			  {field: "age", op: "le", data: 30,  suffixBrackets: true, groupOp: "AND"},
+ * 			  {field: "age", op: "ge", domain: 10,  prefixBrackets:true, groupOp: "AND"},
+ * 			  {field: "age", op: "le", domain: 30,  suffixBrackets: true, groupOp: "AND"},
  * 			]
  * 	      }
  * 		]

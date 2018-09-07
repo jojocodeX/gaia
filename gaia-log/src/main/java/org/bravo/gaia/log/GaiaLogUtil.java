@@ -13,25 +13,25 @@ public class GaiaLogUtil {
 
     public final static String GLOBAL_ERROR_LOGGER = "ERROR";
 
-    public final static String TRACE_MSG_SUB = "TRACE-MESSAGE-SUB";
+    public final static String TRACE_MSG_SUB       = "TRACE-MESSAGE-SUB";
 
-    public final static String TRACE_MSG_PUB = "TRACE-MESSAGE-PUB";
+    public final static String TRACE_MSG_PUB       = "TRACE-MESSAGE-PUB";
 
-    public final static String TRACE_RPC_SEND = "TRACE-RPC-SEND";
+    public final static String TRACE_RPC_SEND      = "TRACE-RPC-SEND";
 
-    public final static String TRACE_RPC_RECEPT = "TRACE-RPC-RECEPT";
+    public final static String TRACE_RPC_RECEPT    = "TRACE-RPC-RECEPT";
 
-    public final static String TRACE_DATABASE = "TRACE-DATABASE";
+    public final static String TRACE_DATABASE      = "TRACE-DATABASE";
 
-    public final static String BIZ_MSG_SUB = "BIZ-MESSAGE-SUB";
+    public final static String BIZ_MSG_SUB         = "BIZ-MESSAGE-SUB";
 
-    public final static String BIZ_MSG_PUB = "BIZ-MESSAGE-PUB";
+    public final static String BIZ_MSG_PUB         = "BIZ-MESSAGE-PUB";
 
-    public final static String BIZ_RPC_SEND = "BIZ-RPC-SEND";
+    public final static String BIZ_RPC_SEND        = "BIZ-RPC-SEND";
 
-    public final static String BIZ_RPC_RECEPT = "BIZ-RPC-RECEPT";
+    public final static String BIZ_RPC_RECEPT      = "BIZ-RPC-RECEPT";
 
-    public final static String BIZ_DATABASE = "BIZ-DATABASE";
+    public final static String BIZ_DATABASE        = "BIZ-DATABASE";
 
     public static Logger getGlobalErrorLogger() {
         return LoggerFactory.getLogger(GLOBAL_ERROR_LOGGER);
@@ -76,7 +76,5 @@ public class GaiaLogUtil {
     public static Logger getBizDatabaseLogger() {
         return LoggerFactory.getLogger(BIZ_DATABASE);
     }
-
-
 
 }
