@@ -14,7 +14,7 @@ import org.bravo.gaia.commons.system.SystemNameEnum;
 public class StarterTest {
 
     public static void main(String[] args) throws InterruptedException {
-//        AppStarter.start(args);
+        AppStarter.start(args);
         //AppStarter.blockingStart(args);
     }
 

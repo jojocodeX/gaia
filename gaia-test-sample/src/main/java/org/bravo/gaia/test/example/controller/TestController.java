@@ -51,8 +51,9 @@ public class TestController {
     }
 
     @RequestMapping("/ajax")
-    public @ResponseBody
-    String ajax() {
+    public @ResponseBody String ajax() {
+        myService.test1();
+        myService.test2();
         return "ok";
     }
 

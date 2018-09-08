@@ -14,7 +14,7 @@ import org.bravo.gaia.commons.domain.ErrorCode;
  * @author lijian
  * @version $Id: PlatformException.java, v 0.1 2018年1月6日 上午11:50:10 lijian Exp $
  */
-public abstract class PlatformException extends RuntimeException {
+public class PlatformException extends RuntimeException {
 
     private static final long   serialVersionUID = -5143695406381565749L;
 
@@ -28,37 +28,37 @@ public abstract class PlatformException extends RuntimeException {
 
     private static final String SPLITOR          = "-";
 
-    protected PlatformException(Throwable throwable) {
+    public PlatformException(Throwable throwable) {
         super(throwable);
         populateErrorCode(throwable);
     }
 
-    protected PlatformException(PlatformException e) {
+    public PlatformException(PlatformException e) {
         super(e.getCurrentErrorCode().toString() + SPLITOR + e.getCurrentErrorCode().getErrorDesc());
         populateErrorCode(e);
     }
 
-    protected PlatformException(ErrorCode errorCode) {
+    public PlatformException(ErrorCode errorCode) {
         super(errorCode.toString() + SPLITOR + errorCode.getErrorDesc());
         this.currentErrorCode = errorCode;
     }
 
-    protected PlatformException(String msg) {
+    public PlatformException(String msg) {
         super(msg);
     }
 
-    protected PlatformException(String msg, ErrorCode errorCode) {
+    public PlatformException(String msg, ErrorCode errorCode) {
         super(msg + errorCode.toString() + SPLITOR + errorCode.getErrorDesc());
         this.currentErrorCode = errorCode;
         this.addErrorCode(errorCode);
     }
 
-    protected PlatformException(String msg, Throwable throwable) {
+    public PlatformException(String msg, Throwable throwable) {
         super(msg, throwable);
         populateErrorCode(throwable);
     }
 
-    protected PlatformException(String msg, PlatformException e) {
+    public PlatformException(String msg, PlatformException e) {
         super(msg + e.getCurrentErrorCode().toString() + SPLITOR + e.getCurrentErrorCode().getErrorDesc(), e);
         populateErrorCode(e);
     }
