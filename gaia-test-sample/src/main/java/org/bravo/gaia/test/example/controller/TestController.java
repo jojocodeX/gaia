@@ -1,24 +1,20 @@
 package org.bravo.gaia.test.example.controller;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.bravo.gaia.log.GaiaLogUtil;
 import org.bravo.gaia.test.example.dao.MyMapper;
-import org.bravo.gaia.test.example.dao.MyMapper2;
-import org.bravo.gaia.test.example.dataobject.User;
 import org.bravo.gaia.test.example.service.MyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.jws.soap.SOAPBinding;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -37,11 +33,17 @@ public class TestController {
     private SqlSessionFactory sqlSessionFactory;
     @Autowired
     private MyService         myService;
+    @Autowired
+    private TransactionTemplate transactionTemplate;
+    @Autowired
+    private PlatformTransactionManager transactionManager;
+
 
     private static final Logger GLOBAL_LOG = LoggerFactory.getLogger(TestController.class);
 
     @RequestMapping("/index")
     public String index(HttpServletRequest request) {
+        System.out.println(transactionManager);
         GaiaLogUtil.getTraceMsgSubLogger().info("消息来了");
         GaiaLogUtil.getTraceRpcSendLogger().info("rpc同步调用来了");
         GLOBAL_LOG.info("全局记录");
