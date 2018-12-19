@@ -18,6 +18,6 @@
         <property name="requestContextAttribute" value="request"/>
     </bean>
 
-    <context:component-scan base-package="org.bravo.gaia.viewsolver.webconfig,org.bravo.gaia.viewsolver.controller"/>
+    <context:component-scan base-package="org.bravo.gaia.viewsolver.webconfig,org.bravo.gaia.viewsolver.controller,org.bravo.gaia.viewsolver.component"/>
 
 </beans>

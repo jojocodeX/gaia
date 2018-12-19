@@ -4,15 +4,15 @@
  */
 package org.bravo.gaia.utils;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.function.Supplier;
-
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.bravo.gaia.commons.commoninterface.IErrorCode;
 import org.bravo.gaia.commons.exception.PlatformException;
+
+import java.util.Collection;
+import java.util.Map;
+import java.util.function.Supplier;
 
 /**
  * 断言工具类
@@ -181,7 +181,7 @@ public abstract class AssertUtil {
         checkArgument(errorCodeEnum);
         checkArgument(errorMsg);
 
-        if (StringUtils.isNoneBlank(text)) {
+        if (StringUtils.isNotBlank(text)) {
             throw new PlatformException(errorMsg, errorCodeEnum.getCode());
         }
     }
@@ -189,7 +189,7 @@ public abstract class AssertUtil {
     public static void isBlank(String text, IErrorCode errorCodeEnum) {
         checkArgument(errorCodeEnum);
 
-        if (StringUtils.isNoneBlank(text)) {
+        if (StringUtils.isNotBlank(text)) {
             throw new PlatformException(errorCodeEnum.getCode());
         }
     }
@@ -197,13 +197,13 @@ public abstract class AssertUtil {
     public static void isBlank(String text, String errorMsg) {
         checkArgument(errorMsg);
 
-        if (StringUtils.isNoneBlank(text)) {
+        if (StringUtils.isNotBlank(text)) {
             throw new PlatformException(errorMsg);
         }
     }
 
     public static void isBlank(String text, Supplier<String> messageSupplier) {
-        if (StringUtils.isNoneBlank(text)) {
+        if (StringUtils.isNotBlank(text)) {
             throw new PlatformException(nullSafeGet(messageSupplier));
         }
     }
