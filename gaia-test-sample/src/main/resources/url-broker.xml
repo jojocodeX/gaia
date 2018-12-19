@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<urls>
+    <url-broker name="a" path="${spring.application.name}/a_value">
+        <children>
+            <child-url-broker name="a1">
+                ${spring.datasource.url}
+            </child-url-broker>
+            <child-url-broker name="a2">
+                <![CDATA[a2_value]]>
+            </child-url-broker>
+        </children>
+    </url-broker>
+    <url-broker name="b" path="${spring.application.name}/a_value">
+        <children>
+            <child-url-broker name="b1">
+                ${spring.datasource.url}
+            </child-url-broker>
+            <child-url-broker name="b2">
+                <![CDATA[a2_value]]>
+            </child-url-broker>
+        </children>
+    </url-broker>
+</urls>
